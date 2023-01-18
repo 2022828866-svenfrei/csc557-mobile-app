@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.RegisterActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_shape">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_back"
+            android:layout_margin="10dp"
+            android:id="@+id/buttonBack" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:text="Register"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:paddingBottom="20dp"
+            android:paddingRight="50dp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:width="300dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputName"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender:"
+            android:width="100dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:layout_below="@+id/inputName"
+            android:id="@+id/labelGender"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Gender"
+            android:width="200dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputGender"
+            android:layout_below="@+id/inputName"
+            android:layout_toRightOf="@+id/labelGender"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Date of Birth"
+            android:width="300dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputBirthdate"
+            android:layout_below="@+id/inputGender"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Hp No."
+            android:width="300dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputPhoneNo"
+            android:layout_below="@+id/inputBirthdate"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:width="300dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputEmail"
+            android:layout_below="@+id/inputPhoneNo"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:width="300dp"
+            android:background="@drawable/input_rounded_shape"
+            android:layout_marginTop="20dp"
+            android:id="@+id/inputPassword"
+            android:layout_below="@+id/inputEmail"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:width="300dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_rounded_shape"
+            android:backgroundTint="@color/secondary"
+            android:textColor="@color/black"
+            android:layout_below="@id/inputPassword"
+            android:id="@+id/buttonRegister"
+            />
+    </RelativeLayout>
+</LinearLayout>

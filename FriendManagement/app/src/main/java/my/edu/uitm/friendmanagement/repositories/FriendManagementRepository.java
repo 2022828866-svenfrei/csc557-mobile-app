@@ -37,7 +37,7 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
     private static final String PHONE_NO_COL = "phoneNo";
     private static final String EMAIL_COL = "email";
 
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
 
 
     public FriendManagementRepository(Context context) {
@@ -113,7 +113,7 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
                 login = new Login(
                         cursor.getLong(cursor.getColumnIndex(ID_LOGIN_COL)),
                         cursor.getString(cursor.getColumnIndex(NAME_COL)),
-                        Gender.valueOf(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
+                        Gender.parse(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
                         dateFormat.parse(cursor.getString(cursor.getColumnIndex(BIRTHDATE_COL))),
                         cursor.getString(cursor.getColumnIndex(PHONE_NO_COL)),
                         cursor.getString(cursor.getColumnIndex(EMAIL_COL)),

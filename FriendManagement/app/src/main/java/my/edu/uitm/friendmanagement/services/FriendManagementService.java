@@ -19,7 +19,7 @@ public class FriendManagementService {
 
     public FriendManagementService(FriendManagementRepository repository, SharedPreferences sharedPreferences) {
         this.repository = repository;
-        sharedPreferences = sharedPreferences;
+        this.sharedPreferences = sharedPreferences;
     }
 
     public long insertLogin(String name, Gender gender, Date birthdate, String phoneNo, String email, String password) {
@@ -37,6 +37,10 @@ public class FriendManagementService {
         }
 
         return isSuccessful;
+    }
+
+    public Login getLoginByEmail(String email) {
+        return repository.getLoginByEmail(email);
     }
 
     public long insertFriend(String name, Gender gender, Date birthdate, String phoneNo, String email, String photo) {
