@@ -19,7 +19,7 @@ import my.edu.uitm.friendmanagement.models.Login;
 
 public class FriendManagementRepository extends SQLiteOpenHelper {
     private static final String DB_NAME = "friendmanagement";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // login table
     private static final String TABLE_NAME_LOGIN = "login";
@@ -62,7 +62,7 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
         query =
                 "CREATE TABLE " + TABLE_NAME_FRIEND + " ("
                         + ID_FRIEND_COL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + FK_LOGIN_COL + " INTEGER UNIQUE NOT NULL,"
+                        + FK_LOGIN_COL + " INTEGER NOT NULL,"
                         + NAME_COL + " TEXT NOT NULL,"
                         + GENDER_COL + " TEXT NOT NULL,"
                         + BIRTHDATE_COL + " TEXT NOT NULL,"
@@ -143,7 +143,7 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
         values.put(EMAIL_COL, email);
         values.put(PHOTO_COL, photo);
 
-        long id = db.insert(TABLE_NAME_LOGIN, null, values);
+        long id = db.insert(TABLE_NAME_FRIEND, null, values);
 
         db.close();
 
@@ -163,7 +163,7 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
         values.put(EMAIL_COL, friend.getEmail());
         values.put(PHOTO_COL, friend.getPhoto());
 
-        db.update(TABLE_NAME_LOGIN, values, ID_LOGIN_COL + " = ?", new String[]{friend.getId() + ""});
+        db.update(TABLE_NAME_FRIEND, values, ID_FRIEND_COL + " = ?", new String[]{friend.getId() + ""});
 
         db.close();
     }
@@ -178,10 +178,10 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
             if(cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 friend = new Friend(
-                        cursor.getLong(cursor.getColumnIndex(ID_LOGIN_COL)),
+                        cursor.getLong(cursor.getColumnIndex(ID_FRIEND_COL)),
                         cursor.getLong(cursor.getColumnIndex(FK_LOGIN_COL)),
                         cursor.getString(cursor.getColumnIndex(NAME_COL)),
-                        Gender.valueOf(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
+                        Gender.parse(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
                         dateFormat.parse(cursor.getString(cursor.getColumnIndex(BIRTHDATE_COL))),
                         cursor.getString(cursor.getColumnIndex(PHONE_NO_COL)),
                         cursor.getString(cursor.getColumnIndex(EMAIL_COL)),
@@ -208,10 +208,10 @@ public class FriendManagementRepository extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     friends.add(new Friend(
-                            cursor.getLong(cursor.getColumnIndex(ID_LOGIN_COL)),
+                            cursor.getLong(cursor.getColumnIndex(ID_FRIEND_COL)),
                             cursor.getLong(cursor.getColumnIndex(FK_LOGIN_COL)),
                             cursor.getString(cursor.getColumnIndex(NAME_COL)),
-                            Gender.valueOf(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
+                            Gender.parse(cursor.getString(cursor.getColumnIndex(GENDER_COL))),
                             dateFormat.parse(cursor.getString(cursor.getColumnIndex(BIRTHDATE_COL))),
                             cursor.getString(cursor.getColumnIndex(PHONE_NO_COL)),
                             cursor.getString(cursor.getColumnIndex(EMAIL_COL)),

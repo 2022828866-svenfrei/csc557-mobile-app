@@ -13,6 +13,20 @@
         android:theme="@style/Theme.FriendManagement"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EditFriendActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.ReportActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.OverviewActivity"
             android:exported="false">
             <meta-data

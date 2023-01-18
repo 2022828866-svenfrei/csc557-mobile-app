@@ -86,7 +86,7 @@
             android:width="300dp"
             android:background="@drawable/button_rounded_shape"
             android:layout_marginTop="80dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_below="@id/inputPassword"
             android:id="@+id/buttonLogin"
             />
@@ -108,7 +108,7 @@
             android:maxHeight="20dp"
             android:background="@drawable/button_rounded_shape"
             android:backgroundTint="@color/secondary"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_below="@id/registerTitle"
             android:id="@+id/buttonRegister"
             />

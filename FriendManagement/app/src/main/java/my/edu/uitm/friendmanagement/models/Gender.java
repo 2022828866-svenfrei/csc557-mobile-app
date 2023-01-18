@@ -1,14 +1,20 @@
 package my.edu.uitm.friendmanagement.models;
 
 public enum Gender {
-    UNKNOWN("Unknown"),
-    MALE("Male"),
-    FEMALE("Female");
+    UNKNOWN("Unknown", 0),
+    MALE("Male", 1),
+    FEMALE("Female", 2);
 
     private String friendlyName;
+    private int index;
 
-    private Gender(String friendlyName) {
+    private Gender(String friendlyName, int index) {
         this.friendlyName = friendlyName;
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     @Override

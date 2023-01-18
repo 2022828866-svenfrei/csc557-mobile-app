@@ -19,6 +19,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     private Consumer<LocalDate> onDateSetCallback;
     private String currentDate;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public DatePickerFragment(Consumer<LocalDate> onDateSetCallback, String currentDate) {
         this.onDateSetCallback = onDateSetCallback;
@@ -31,7 +32,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         final Calendar c = Calendar.getInstance();
 
         try {
-            c.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(currentDate));
+            c.setTime(dateFormat.parse(currentDate));
         } catch (ParseException e) {
         }
 

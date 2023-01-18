@@ -1,9 +1,11 @@
 package my.edu.uitm.friendmanagement.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import my.edu.uitm.friendmanagement.R;
 import my.edu.uitm.friendmanagement.fragments.DatePickerFragment;
@@ -28,6 +31,7 @@ import my.edu.uitm.friendmanagement.services.FriendManagementService;
 public class RegisterActivity extends AppCompatActivity {
 
     private FriendManagementService friendManagementService;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                 try {
                     friendManagementService.insertLogin(name
                             , gender
-                            , new SimpleDateFormat("yyyy-MM-dd").parse(birthdate)
+                            , dateFormat.parse(birthdate)
                             , phoneNo
                             , email
                             , password);
@@ -109,6 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void showDatePickerDialog() {
         EditText inputBirthdate = findViewById(R.id.inputBirthdate);
 
@@ -116,9 +121,10 @@ public class RegisterActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void onSetDateCallback(LocalDate date) {
         EditText inputBirthdate = findViewById(R.id.inputBirthdate);
 
-        inputBirthdate.setText(date.toString());
+        inputBirthdate.setText(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 }

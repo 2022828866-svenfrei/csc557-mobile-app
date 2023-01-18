@@ -2,6 +2,7 @@ package my.edu.uitm.friendmanagement.services;
 
 import android.content.SharedPreferences;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,12 @@ public class FriendManagementService {
     }
 
     public long insertLogin(String name, Gender gender, Date birthdate, String phoneNo, String email, String password) {
-        return repository.insertLogin(name, gender, birthdate, phoneNo, email, password);
+        long loginId = repository.insertLogin(name, gender, birthdate, phoneNo, email, password);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_CURRENT_USER, loginId + "");
+
+        return loginId;
     }
 
     public boolean isLoginSuccessful(String email, String password) {
@@ -33,7 +39,8 @@ public class FriendManagementService {
 
         if (isSuccessful) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(KEY_CURRENT_USER, login.getId() + "");
+            editor.putLong(KEY_CURRENT_USER, login.getId());
+            editor.commit();
         }
 
         return isSuccessful;
@@ -47,7 +54,16 @@ public class FriendManagementService {
         return repository.insertFriend(getCurrentUser(), name, gender, birthdate, phoneNo, email, photo);
     }
 
-    public void updateFriend(Friend friend) {
+    public void updateFriend(long id, String name, Gender gender, Date birthdate, String phoneNo, String email, String photo) {
+        Friend friend = new Friend(id
+                , getCurrentUser()
+                , name
+                , gender
+                , birthdate
+                , phoneNo
+                , email
+                , null);
+
         repository.updateFriend(friend);
     }
 
