@@ -13,4 +13,9 @@
         android:icon="@drawable/ic_report"
         android:title="report"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/menuLogout"
+        android:icon="@drawable/ic_logout"
+        android:title="logout"
+        app:showAsAction="always" />
 </menu>

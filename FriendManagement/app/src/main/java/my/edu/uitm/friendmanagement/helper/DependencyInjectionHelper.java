@@ -11,16 +11,18 @@ public class DependencyInjectionHelper {
     private static final String FRIEND_MANAGAMENT_PREFERENCES = "FriendManagementPrefs";
     private static SharedPreferences sharedPreferences;
 
-    public static FriendManagementService getFriendManagementServiceByActivity(Activity activity) {
-        FriendManagementRepository repository = new FriendManagementRepository(activity);
-
-        return new FriendManagementService(repository
-                , getSharedPreferences(activity));
+    public static FriendManagementService getFriendManagementServiceByContext(Context context) {
+        return new FriendManagementService(getFriendManagementRepository(context)
+                , getSharedPreferences(context));
     }
 
-    private static SharedPreferences getSharedPreferences(Activity activity) {
+    public static FriendManagementRepository getFriendManagementRepository(Context context) {
+        return new FriendManagementRepository(context);
+    }
+
+    private static SharedPreferences getSharedPreferences(Context context) {
         if (sharedPreferences == null)
-            sharedPreferences = activity.getSharedPreferences(FRIEND_MANAGAMENT_PREFERENCES, Context.MODE_PRIVATE);
+            sharedPreferences = context.getSharedPreferences(FRIEND_MANAGAMENT_PREFERENCES, Context.MODE_PRIVATE);
 
         return  sharedPreferences;
     }

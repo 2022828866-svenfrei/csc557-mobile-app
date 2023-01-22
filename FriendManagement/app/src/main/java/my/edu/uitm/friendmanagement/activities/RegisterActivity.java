@@ -7,13 +7,11 @@ import androidx.fragment.app.DialogFragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -60,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(l -> onRegisterClick());
 
         // set instance of service
-        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByActivity(this);
+        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByContext(this);
     }
 
     private void onBackButtonClick() {

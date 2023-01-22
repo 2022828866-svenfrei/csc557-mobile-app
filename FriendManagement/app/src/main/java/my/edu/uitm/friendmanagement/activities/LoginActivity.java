@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         registerButton.setOnClickListener(view -> onRegisterButtonClick());
 
         // set instance of service
-        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByActivity(this);
+        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByContext(this);
     }
 
     private void onLoginButtonClick() {

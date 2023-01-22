@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import my.edu.uitm.friendmanagement.R;
+import my.edu.uitm.friendmanagement.activities.LoginActivity;
 import my.edu.uitm.friendmanagement.activities.OverviewActivity;
 import my.edu.uitm.friendmanagement.activities.ReportActivity;
 
@@ -31,6 +32,9 @@ public class BaseActivity extends AppCompatActivity {
                 break;
             case R.id.menuReport:
                 startActivity(new Intent(this, ReportActivity.class));
+                break;
+            case R.id.menuLogout:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case android.R.id.home:
                 super.onBackPressed();

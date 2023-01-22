@@ -1,6 +1,5 @@
 package my.edu.uitm.friendmanagement.activities;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +35,7 @@ public class EditFriendActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_friend);
         initActivity("Edit");
-        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByActivity(this);
+        friendManagementService = DependencyInjectionHelper.getFriendManagementServiceByContext(this);
 
         // gender spinner setup
         Spinner genderSpinner = findViewById(R.id.inputGender);
